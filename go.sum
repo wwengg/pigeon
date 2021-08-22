@@ -519,6 +519,10 @@ github.com/vmihailenco/tagparser/v2 v2.0.0 h1:y09buUbR+b5aycVFQs/g70pqKVZNBmxwAh
 github.com/vmihailenco/tagparser/v2 v2.0.0/go.mod h1:Wri+At7QHww0WTrCBeu4J6bNtoV6mEfg5OIWRZA9qds=
 github.com/wwengg/arsenal v0.0.2-0.20210822075139-8466df097abe h1:A3BdeNYERVluo1kmX3fVJQt3eA9lGSHDNLhsgLapH18=
 github.com/wwengg/arsenal v0.0.2-0.20210822075139-8466df097abe/go.mod h1:CuHuDlGPNIdRzf3fNj2USdhQwTBuAz4B1bDHNVHdUoc=
+github.com/wwengg/arsenal v0.0.2-0.20210822082634-f0ccb8f0ea1b h1:61F0cBVUrmvZ1roSa5BVaCXH1zItutpgmMQ6doqp4d8=
+github.com/wwengg/arsenal v0.0.2-0.20210822082634-f0ccb8f0ea1b/go.mod h1:CuHuDlGPNIdRzf3fNj2USdhQwTBuAz4B1bDHNVHdUoc=
+github.com/wwengg/arsenal v0.0.2-0.20210822083326-c93199fd3c69 h1:bVMt4VnZlKKbSBzOFehOD6LFPf/cbIjGU0WusVK/d8I=
+github.com/wwengg/arsenal v0.0.2-0.20210822083326-c93199fd3c69/go.mod h1:CuHuDlGPNIdRzf3fNj2USdhQwTBuAz4B1bDHNVHdUoc=
 github.com/wwengg/proto v0.0.0-20210821031700-75b2f457e200 h1:Q2+xekIx4imNYg2nJPRHDNreLlee7Lk9LWxFJzZ8Ib4=
 github.com/wwengg/proto v0.0.0-20210821031700-75b2f457e200/go.mod h1:v5WQ2uUYWkvGcu6aJGwDvup+MPyAETqDUV97k6p3HyM=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
