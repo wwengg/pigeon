@@ -10,6 +10,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/wwengg/arsenal/anet"
+	"github.com/wwengg/arsenal/cache"
 )
 
 type Client struct {
@@ -64,13 +65,15 @@ func (c *Client) SendMsg(msgID uint32, data proto.Message) {
 	return
 }
 
-
-func (c *Client) ConnectionLost(){
+func (c *Client) ConnectionLost() {
 	// 删除redis中的在线
-
+	cId := fmt.Sprintf("%d", c.CID)
+	_ = cache.Redis.Del(cId)
+	_ = cache.Redis.HashDel(DefKey, cId)
 }
 
-func (c *Client) ConnectionAdd(){
-
+func (c *Client) ConnectionAdd() {
+	cId := fmt.Sprintf("%d", c.CID)
+	_ = cache.Redis.Set(cId, DefKey, 0)
+	_ = cache.Redis.HashSet(DefKey, cId, 0)
 }
-

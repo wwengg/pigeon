@@ -23,6 +23,7 @@ import (
 	"github.com/wwengg/arsenal/anet"
 	"github.com/wwengg/arsenal/anet/impl"
 	"github.com/wwengg/arsenal/atimer"
+	"github.com/wwengg/arsenal/cache"
 	"github.com/wwengg/arsenal/config"
 	"github.com/wwengg/arsenal/logger"
 	"github.com/wwengg/arsenal/sdk/rpcx"
@@ -31,6 +32,7 @@ import (
 	"github.com/wwengg/pigeon/internal"
 	"github.com/wwengg/pigeon/internal/timer"
 	"github.com/wwengg/pigeon/router"
+	rpcx2 "github.com/wwengg/pigeon/rpcx"
 )
 
 func OnConnectionAdd(conn anet.Connection) {
@@ -41,6 +43,10 @@ func OnConnectionAdd(conn anet.Connection) {
 	conn.SetProperty("tID", tId)
 
 	logger.ZapLog.Info("=====> client arrived ====", zap.Any("cID", cID))
+
+	c := internal.NewClient(conn, cID)
+	internal.GlobalMgrObj.AddClient(c)
+	c.ConnectionAdd()
 }
 
 func OnConnectionLost(conn anet.Connection) {
@@ -55,6 +61,7 @@ func OnConnectionLost(conn anet.Connection) {
 	if c := internal.GlobalMgrObj.GetClientByCID(cID.(uint64)); c != nil {
 		c.ConnectionLost()
 	}
+	internal.GlobalMgrObj.RemoveClientByCID(cID.(uint64))
 }
 
 func main() {
@@ -64,10 +71,17 @@ func main() {
 	// Init logger
 	logger.Setup()
 
+	// Init Redis
+	cache.Setup()
+
 	// new tcpServer
 	ts := impl.NewServer()
-	ts.AddRouter(0, new(router.KeepAlive))
+	ts.AddRouter(0, &router.KeepAlive{})
 
+	// setRpcxRouter
+	ts.SetRpcxRouter(&router.RpcxRouter{})
+
+	// setRpcxHandle
 	ts.SetOnConnStop(OnConnectionLost)
 	ts.SetOnConnStart(OnConnectionAdd)
 	ts.Serve()
@@ -76,11 +90,6 @@ func main() {
 	rpcx.RpcxClientsObj.SetupServiceDiscovery()
 	rpcx.RpcxClientsObj.SetFailMode(client.Failover)
 
-	// new rpcx server
-	s := rpcx.NewRpcxServer()
-
-	s.RegisterName("pigeon", nil, "")
-
-	s.Serve()
+	rpcx2.Run()
 
 }
