@@ -11,6 +11,8 @@ import (
 	"github.com/wwengg/arsenal/atimer"
 	"github.com/wwengg/arsenal/logger"
 	"go.uber.org/zap"
+
+	"github.com/wwengg/pigeon/internal"
 )
 
 var AutoTimerSchedulerObj *atimer.TimerScheduler
@@ -24,12 +26,16 @@ func StopConnect(v ...interface{}) {
 	conn := v[0].(anet.Connection)
 	logger.ZapLog.Info("StopConnect func Start", zap.Any("conn", conn))
 	//cID := conn.GetProperty("cID")
-	fmt.Println("心跳超时 30秒")
-	_, err := conn.GetProperty("cID")
+	cID, err := conn.GetProperty("cID")
 	if err != nil {
 		logger.ZapLog.Error("StopConnect cID error", zap.Any("err", err))
 		conn.Stop()
 		return
 	}
+	if c := internal.GlobalMgrObj.GetClientByCID(cID.(uint64)); c == nil {
+		fmt.Println("心跳超时 30秒,客户端已移除，忽略")
+		return
+	}
+	fmt.Println("心跳超时 30秒")
 	conn.Stop()
 }

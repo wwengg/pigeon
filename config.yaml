@@ -8,7 +8,7 @@ jwt:
 zap:
   level: 'info'
   format: 'console'
-  prefix: '[lobby]'
+  prefix: '[pigeon]'
   director: 'log'
   link-name: 'latest_log'
   show-line: true
@@ -32,3 +32,19 @@ redis:
   addr: ["127.0.0.1:6379"]
   db: 0
 
+tcp-config:
+  name: "pigeon"
+  ip: "0.0.0.0"
+  tcp-port: 8999
+  max-conn: 200
+  worker-pool-size: 50
+  max-worker-task-len: 1024
+  max-msg-chan-len: 1024
+  max-packet-size: 4096
+
+websocket:
+  enable: true
+  addr: "127.0.0.1:8998"
+  conn-write-timeout: 30
+  conn-read-timeout: 30
+  max-header-len: 4096
