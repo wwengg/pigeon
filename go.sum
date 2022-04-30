@@ -610,8 +610,8 @@ github.com/vmihailenco/msgpack/v5 v5.3.5 h1:5gO0H1iULLWGhs2H5tbAHIZTV8/cYafcFOr9
 github.com/vmihailenco/msgpack/v5 v5.3.5/go.mod h1:7xyJ9e+0+9SaZT0Wt1RGleJXzli6Q/V5KbhBonMG9jc=
 github.com/vmihailenco/tagparser/v2 v2.0.0 h1:y09buUbR+b5aycVFQs/g70pqKVZNBmxwAhO7/IwNM9g=
 github.com/vmihailenco/tagparser/v2 v2.0.0/go.mod h1:Wri+At7QHww0WTrCBeu4J6bNtoV6mEfg5OIWRZA9qds=
-github.com/wwengg/arsenal v0.0.3-0.20220430035959-aa7caf0640fd h1:ckQX7Py8zccGSRpP0hT46X8KDxq5R1e4TqWT7QsDriw=
-github.com/wwengg/arsenal v0.0.3-0.20220430035959-aa7caf0640fd/go.mod h1:UGcuUnL8HAgAzbJP+D6SYCpSG3dFcPyw/v/3hyX2rqE=
+github.com/wwengg/arsenal v0.0.3-0.20220430072636-ecf85e76c975 h1:QmyVXJJGxBPQJFauInFD0fEFAY9MK8ek4LCLI7V5IBM=
+github.com/wwengg/arsenal v0.0.3-0.20220430072636-ecf85e76c975/go.mod h1:UGcuUnL8HAgAzbJP+D6SYCpSG3dFcPyw/v/3hyX2rqE=
 github.com/wwengg/proto v0.0.3 h1:X8KfkVkoM9BMIF9aoE0qZypSphPDnkKC/MaHOSNkqs0=
 github.com/wwengg/proto v0.0.3/go.mod h1:v5WQ2uUYWkvGcu6aJGwDvup+MPyAETqDUV97k6p3HyM=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
